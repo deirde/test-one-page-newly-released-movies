@@ -79,8 +79,6 @@ namespace Deirde\NewlyReleasedMovies {
             $apiUrl = str_replace('<movie_id>', $item_id, $this->apiUrls['salePriceItemByIdAndCurrency']);
             $apiUrl = str_replace('<currency>', $currency, $apiUrl);
 
-            $contents = @file_get_contents($apiUrl);
-
             if ($contents = json_decode(@file_get_contents($apiUrl)))
             {
                 return money_format('%i', $contents->price);
