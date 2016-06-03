@@ -71,7 +71,7 @@ namespace Deirde\NewlyReleasedMovies {
          * Returns the item prices.
          * @param $item_id
          * @param $currency
-         * @return array
+         * @return mixed
          */
         private function getPriceByIdAndCurrency($item_id, $currency)
         {
