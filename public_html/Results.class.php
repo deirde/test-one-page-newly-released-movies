@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Newly released movies by API.
+ * Newly released movies by APIs.
  */
 namespace Deirde\NewlyReleasedMovies {
 
