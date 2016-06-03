@@ -71,7 +71,7 @@ namespace Deirde\NewlyReleasedMovies {
          * Returns the item prices.
          * @param $item_id
          * @param $currency
-         * @return bool|mixed
+         * @return array
          */
         private function getPriceByIdAndCurrency($item_id, $currency)
         {
@@ -79,23 +79,23 @@ namespace Deirde\NewlyReleasedMovies {
             $apiUrl = str_replace('<movie_id>', $item_id, $this->apiUrls['salePriceItemByIdAndCurrency']);
             $apiUrl = str_replace('<currency>', $currency, $apiUrl);
 
-            if ($response = $this->jsonDecode(@file_get_contents($apiUrl)))
+            $contents = @file_get_contents($apiUrl);
+
+            if ($contents = json_decode(@file_get_contents($apiUrl)))
             {
-                $response = money_format('%i', $response->price);
+                return money_format('%i', $contents->price);
             }
             else
             {
-                $response = false;
+                return false;
             }
-
-            return $response;
 
         }
 
         /**
          * Adds the <price> property to the item object.
          * @param $item
-         * @return mixed
+         * @return object
          */
         private function setPriceByItem($item)
         {
@@ -112,12 +112,12 @@ namespace Deirde\NewlyReleasedMovies {
 
         /**
          * Gets all available items.
-         * @return mixed
+         * @return array
          */
         public function getAllNewlyReleasedItems()
         {
 
-            $items = $this->jsonDecode(file_get_contents($this->apiUrls['allNewlyReleasedItems']));
+            $items = json_decode(file_get_contents($this->apiUrls['allNewlyReleasedItems']));
 
             for ($i = 0; $i <= count($items); $i++) {
 
@@ -132,17 +132,6 @@ namespace Deirde\NewlyReleasedMovies {
             }
 
             return $items;
-
-        }
-
-        /**
-         * @param $row_json
-         * @return mixed
-         */
-        private function jsonDecode($row_json)
-        {
-
-            return json_decode($row_json);
 
         }
 
