@@ -81,7 +81,7 @@ namespace Deirde\NewlyReleasedMovies {
 
             if ($response = $this->jsonDecode(@file_get_contents($apiUrl)))
             {
-                $response = $response->price;
+                $response = money_format('%i', $response->price);
             }
             else
             {
