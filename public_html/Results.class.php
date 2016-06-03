@@ -5,9 +5,6 @@
  */
 namespace Deirde\NewlyReleasedMovies {
 
-    /**
-     *
-     */
     class Results
     {
 
