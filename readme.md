@@ -12,6 +12,3 @@ Note
 ----
 This is a technical test.<br/>
 TIME: 100 minutes.<br/>
-URL: http://test-one-page-newly-released-movies.123beta.net/<br/>
-Uid: test123<br/>
-Psw: test123
